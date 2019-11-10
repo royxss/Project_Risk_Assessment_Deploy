@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  model:
+    build: ./ms_model
+    command: "/bin/bash"
+    container_name: model
+    ports:
+      - 6000:6000
+    volumes:
+      - vmodel:/app
+
+  flaskapp:
+    build: ./ms_flask_app
+    container_name: flaskapp
+    depends_on:
+      - model
+    environment:
+      FLASK_DEBUG: 'true'
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/app
+
+volumes:
+  vmodel:
