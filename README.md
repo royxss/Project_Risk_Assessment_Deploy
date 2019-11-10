@@ -15,6 +15,7 @@ This solution is a mimick of microservice architecture where every component is 
 
 #### Containers:
 1. ms_flask_app: A microservice for the flask application. This serves the POST request after it receives request. The request calls model.predict to serve the result. The application is built without uWSGI which is not recommended. 
+    
     Recommended:
         a. Nginx - A reverse proxy server that can handle multiple requests at a port and sends it to application server.
         b. uWSGI/GUnicorn - An application server which accepts requests from Nginx and serves through flask application.
