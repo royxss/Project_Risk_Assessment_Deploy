@@ -15,13 +15,13 @@ This solution is a mimick of microservice architecture where every component is 
 
 #### Containers:
 1. ms_flask_app: A microservice for the flask application. This serves the POST request after it receives request. The request calls model.predict to serve the result. The application is built without uWSGI which is not recommended. 
-    *Recommended:
-        *a. Nginx - A reverse proxy server that can handle multiple requests at a port and sends it to application server.
-        *b. uWSGI/GUnicorn - An application server which accepts requests from Nginx and serves through flask application.
+    Recommended:
+        a. Nginx - A reverse proxy server that can handle multiple requests at a port and sends it to application server.
+        b. uWSGI/GUnicorn - An application server which accepts requests from Nginx and serves through flask application.
 
 2. ms_model: A microservice for model training and deployment. Model is decoupled from the application because of the below reasons.
-    *2.a: Model re-deployment is easier without impacting the application which will always be up.
-    *2.b: Loading large models (DL) requires memory and time to load. It is a challenge for developers to re-train models when the application becomes huge as they might run into memory issues.
+    2.a: Model re-deployment is easier without impacting the application which will always be up.
+    2.b: Loading large models (DL) requires memory and time to load. It is a challenge for developers to re-train models when the application becomes huge as they might run into memory issues.
 
 #### Workflow:
 1. ms_model container is built and run first. This container contains predict-late-payers-basic-model.py and training data. This container calls the predict-late-payers-basic-model.py which re-trains on the data and pickels the model file to the shared volume. The container is kept running by initializing a bash and this keeps the volume stateful.
