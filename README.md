@@ -1,5 +1,8 @@
 # Business Problem
-Our fictional client PeerLoan is a peer to peer lending company. PeerLoan is modernizing how they handle risk assessment. They want to use machine learning to predict which loan holders have a high risk of being late on loan payments in the next quarter.
+Client PeerLoan is a peer to peer lending company. PeerLoan is modernizing how they handle risk assessment. They want to use machine learning to predict which loan holders have a high risk of being late on loan payments in the next quarter.
+
+# Proposed Solution
+Deploy a model for predicting when loan holders will be late on their loan payment. Also, provide a REST API so other applications can submit a POST request and receive back prediction results.
 
 # Requirement 1: Deploy the Basic Model
 
