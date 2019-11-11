@@ -1,7 +1,7 @@
 # Import Libraries
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+import xgboost as xgb
 
 # Preprocessing and Pipeline libraries
 from sklearn.compose import ColumnTransformer
@@ -9,17 +9,20 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.preprocessing import OneHotEncoder
 import pickle
-import xgboost as xgb
 from sklearn.preprocessing import RobustScaler
 from sklearn.metrics import *
+from imblearn.over_sampling import SMOTE
+from imblearn.pipeline import Pipeline, make_pipeline
+
 
 print("\nLoading training data...")
 # load training data
-test_data = pd.read_csv("training/data/peerLoanTraining.csv", engine='python', header=0)
+train_data = pd.read_csv("training/data/peerLoanTraining.csv", engine='python', header=0)
 
 # Separate out X and y
-X_train = test_data.loc[:, test_data.columns != 'is_late']
-y_train = test_data['is_late']
+train_data = train_data.dropna()
+X_train = train_data.loc[:, train_data.columns != 'is_late']
+y_train = train_data['is_late']
 
 # load test data
 test_data = pd.read_csv("training/data/peerLoanTest.csv", engine='python', header=0)
@@ -35,7 +38,7 @@ numeric_features = ['loan_amnt',
                    ]
 
 numeric_transformer = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='median')),
+    ('imputer', SimpleImputer(strategy='median',fill_value = 0)),
     ])
 
 scaling_transformer = Pipeline(steps=[
@@ -66,9 +69,7 @@ xgb_clf = xgb.XGBClassifier(objective="binary:logistic",
                             random_state=42)    
 
 # Combine preprocessing with classifier
-latePaymentsModel = make_pipeline(
-    preprocess,
-    xgb_clf)
+latePaymentsModel = make_pipeline(preprocess, SMOTE(random_state=42), xgb_clf)
 
 # Fit the pipeline to the training data (fit is for both the preprocessing and the classifier)
 print("\nTraining model ...")
@@ -122,7 +123,8 @@ print(pickledModel.predict_proba(payLatePredictionDf))
 
 # Predict class probabilities for a set of records using the test set
 print("\nPredicting class probabilities for the test data set:")
-print(pickledModel.predict_proba(X_test))
+#print(pickledModel.predict_proba(X_test))
 
 from sklearn.metrics import accuracy_score
+print("ROC AUC Score:\n%s" % roc_auc_score(y_test, latePaymentsModel.predict(X_test)))
 print("Classification_report:\n%s" % classification_report(y_test, latePaymentsModel.predict(X_test)))

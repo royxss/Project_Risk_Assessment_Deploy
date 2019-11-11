@@ -15,6 +15,7 @@ This solution is a mimick of microservice architecture where every component is 
 
 #### Containers:
 1. ms_flask_app: A microservice for the flask application. This serves the POST request after it receives request. The request calls model.predict to serve the result. The application is built without uWSGI which is not recommended. 
+    
     Recommended:
         a. Nginx - A reverse proxy server that can handle multiple requests at a port and sends it to application server.
         b. uWSGI/GUnicorn - An application server which accepts requests from Nginx and serves through flask application.
@@ -53,7 +54,7 @@ As a best practice, development updates should be done through a CI/CD tool like
 1. Some of the data is skewed. Would require scaling
 2. 2% minority class of target levels. Needs sampling methods.
 3. Some category with specific values have large defauters. For e.g. small_business loan type, grade value of F, home_ownership type of 'any'
-4. revol_util has missing values.
+4. revol_util, emp_length has missing values.
 5. Correlation of numeric columns is very low which is nice.
 The EDA performed can be found in https://colab.research.google.com/drive/1BicvLkodqb41dTzQswxJvOQLUrgX_Ugs
 
@@ -62,13 +63,13 @@ The EDA performed can be found in https://colab.research.google.com/drive/1BicvL
 2. Wrong choice of measurement metrics.
 3. No parameter tuning, grid tuning with cross validation, eval_set.
 4. No oversampling techniques like SMOTE.
-7. Output is not self explanatory to customers i.e. need a probabilistic threshold and display yes/no.
+5. Output is not self explanatory to customers i.e. need a probabilistic threshold and display yes/no.
 
 ### Improvements:
 1. Choice of boosting mechanism.
 2. Model tuning using grid search with cross validation.
 3. Metrics as AUC/RoC and recall.
-4. Sysnthetic Sampling using SMOTE - Could not be completed.
+4. Sysnthetic Sampling using SMOTE
 
 ### Post Production Support:
 1. Event trigger when model drifts.
