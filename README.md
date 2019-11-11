@@ -74,6 +74,9 @@ As a best practice, development updates should be done through a CI/CD tool like
 4. No oversampling techniques like SMOTE.
 5. Output is not self explanatory to customers i.e. need a probabilistic threshold and display yes/no.
 
+![old res](https://user-images.githubusercontent.com/22176868/68609722-b907b500-047b-11ea-8dc3-b9f8d065d6f1.png)
+
+
 ### Improvements:
 1. Choice of boosting mechanism.
 2. Model tuning using grid search with cross validation.
