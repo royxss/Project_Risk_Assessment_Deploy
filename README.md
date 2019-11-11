@@ -27,6 +27,8 @@ This solution is a mimick of microservice architecture where every component is 
     2.a: Model re-deployment is easier without impacting the application which will always be up.
     2.b: Loading large models (DL) requires memory and time to load. It is a challenge for developers to re-train models when the application becomes huge as they might run into memory issues.
 ![folders](https://user-images.githubusercontent.com/22176868/68600935-f9aa0300-0468-11ea-994e-b62eec312733.png)
+
+![folders2](https://user-images.githubusercontent.com/22176868/68601523-1c88e700-046a-11ea-816b-4a7490e3d838.png)
     
 
 #### Workflow:
