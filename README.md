@@ -80,5 +80,7 @@ As a best practice, development updates should be done through a CI/CD tool like
 3. Metrics as AUC/RoC and recall.
 4. Sysnthetic Sampling using SMOTE
 
+![trained_results](https://user-images.githubusercontent.com/22176868/68609507-0d5e6500-047b-11ea-94fc-08cfd0038e3b.png)
+
 ### Post Production Support:
 1. Event trigger when model drifts.
