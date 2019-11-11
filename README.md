@@ -36,6 +36,7 @@ This solution is a mimick of microservice architecture where every component is 
 The above steps can be automated by running docker-compose.yml.
 
 3. The user opens up a browser and types http://0.0.0.0:5000. This will serve and html page where user can fill out the text box and hit submit to receive predictions. The service is expection enabled.
+
 ![App_Image](https://user-images.githubusercontent.com/22176868/68561637-02b8b700-040c-11ea-9275-f6569bf97963.png)
  
 ## Other Recommendations:
