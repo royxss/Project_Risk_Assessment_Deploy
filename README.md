@@ -23,6 +23,8 @@ This solution is a mimick of microservice architecture where every component is 
 2. ms_model: A microservice for model training and deployment. Model is decoupled from the application because of the below reasons.
     2.a: Model re-deployment is easier without impacting the application which will always be up.
     2.b: Loading large models (DL) requires memory and time to load. It is a challenge for developers to re-train models when the application becomes huge as they might run into memory issues.
+![folders](https://user-images.githubusercontent.com/22176868/68600935-f9aa0300-0468-11ea-994e-b62eec312733.png)
+    
 
 #### Workflow:
 1. ms_model container is built and run first. This container contains predict-late-payers-basic-model.py and training data. This container calls the predict-late-payers-basic-model.py which re-trains on the data and pickels the model file to the shared volume. The container is kept running by initializing a bash and this keeps the volume stateful.
