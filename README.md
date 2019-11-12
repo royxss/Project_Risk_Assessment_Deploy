@@ -69,7 +69,7 @@ As a best practice, development updates should be done through a CI/CD tool like
 ![old res](https://user-images.githubusercontent.com/22176868/68609722-b907b500-047b-11ea-8dc3-b9f8d065d6f1.png)
 
 ### Exploratory Data Analysis:
-1. Some of the data is skewed. Would require scaling
+1. Some of the data is skewed. Would require scaling.
 2. 2% minority class of target levels. Needs sampling methods.
 3. Some category with specific values have large defauters. For e.g. small_business loan type, grade value of F, home_ownership type of 'any'
 4. revol_util, emp_length has missing values.
@@ -79,8 +79,9 @@ As a best practice, development updates should be done through a CI/CD tool like
 ### Improvements:
 1. Choice of boosting mechanism.
 2. Model tuning using grid search with cross validation.
-3. Metrics as AUC/RoC and recall.
-4. Sysnthetic Sampling using SMOTE
+3. Measurement metrics as AUC/RoC and recall.
+4. Synthetic sampling using SMOTE.
+5. Added scaling to the pipeline.
 
 ![trained_results](https://user-images.githubusercontent.com/22176868/68609507-0d5e6500-047b-11ea-94fc-08cfd0038e3b.png)
 
