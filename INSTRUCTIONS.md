@@ -24,10 +24,12 @@ docker run -it -p 5000:5000 -e FLASK_APP=app.py --rm --name flaskapp -e FLASK_DE
 
 # Verify if volumes work
 docker container exec -it flaskapp sh
-then navigate to respective folder.
+
+Then navigate to respective folder.
 
 # Start nginx docker
 docker build -t nginx .
+
 docker run -it --name nginx -p 80:80 nginx
 
 # Use docker compose
