@@ -59,14 +59,6 @@ As a best practice, development updates should be done through a CI/CD tool like
 
 
 # Requirement 2: Improve and Deploy the Model
-### Exploratory Data Analysis:
-1. Some of the data is skewed. Would require scaling
-2. 2% minority class of target levels. Needs sampling methods.
-3. Some category with specific values have large defauters. For e.g. small_business loan type, grade value of F, home_ownership type of 'any'
-4. revol_util, emp_length has missing values.
-5. Correlation of numeric columns is very low which is nice.
-##### The EDA performed can be found in https://colab.research.google.com/drive/1BicvLkodqb41dTzQswxJvOQLUrgX_Ugs
-
 ### Few Code Observations:
 1. OOPS/function implementation missing.
 2. Wrong choice of measurement metrics.
@@ -76,6 +68,13 @@ As a best practice, development updates should be done through a CI/CD tool like
 6. Below is the screenshot of results before improvements. The results fails for predicting defaulters.
 ![old res](https://user-images.githubusercontent.com/22176868/68609722-b907b500-047b-11ea-8dc3-b9f8d065d6f1.png)
 
+### Exploratory Data Analysis:
+1. Some of the data is skewed. Would require scaling
+2. 2% minority class of target levels. Needs sampling methods.
+3. Some category with specific values have large defauters. For e.g. small_business loan type, grade value of F, home_ownership type of 'any'
+4. revol_util, emp_length has missing values.
+5. Correlation of numeric columns is very low which is nice.
+##### The EDA performed can be found in https://colab.research.google.com/drive/1BicvLkodqb41dTzQswxJvOQLUrgX_Ugs
 
 ### Improvements:
 1. Choice of boosting mechanism.
