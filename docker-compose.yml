@@ -3,12 +3,14 @@ version: '3'
 services:
   model:
     build: ./ms_model
-    command: "/bin/bash"
+    command: /bin/bash
+    stdin_open: true
+    tty: true
     container_name: model
     ports:
       - 6000:6000
     volumes:
-      - vmodel:/app
+      - modelvol:/app/public
 
   flaskapp:
     build: ./ms_flask_app
@@ -20,7 +22,7 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - .:/app
+      - modelvol:/app/public
 
 volumes:
-  vmodel:
+  modelvol:
